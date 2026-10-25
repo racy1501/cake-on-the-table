@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>桌上有蛋糕</title>
+<meta name="description" content="桌上有一只蛋糕。挑一块吃掉，盘底会掉出一张小纸条。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="boot-warning" hidden style="position:fixed;left:0;right:0;top:0;z-index:99;padding:12px 18px;background:#8b4156;color:#fff;font:14px/1.6 system-ui,sans-serif;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.2)">
+    页面没加载完整。刷新一下就好 —— 电脑上按 F5，手机上下拉刷新。
+  </div>
+  <script>
+    window.setTimeout(function () {
+      if (document.documentElement.dataset.cakeReady) return;
+      var warning = document.getElementById("boot-warning");
+      if (warning) warning.hidden = false;
+    }, 3000);
+  </script>
+
+<main class="room">
+  <header class="intro">
+    <p class="eyebrow" id="site-subtitle">A TINY CAKE FOR ANYONE</p>
+    <h1 id="site-title">桌上有蛋糕</h1>
+    <p class="lede" id="site-intro">挑一块你看顺眼的。吃掉以后，盘底可能会掉出一句话。</p>
+  </header>
+
+  <section class="table" aria-labelledby="cake-heading">
+    <div class="tablecloth" aria-hidden="true"></div>
+    <div class="table-head">
+      <div class="round-badge">第 <strong id="round-badge-number">1</strong> 盘蛋糕</div>
+      <p class="hint" id="status-line" aria-live="polite">正在看看蛋糕还剩几块……</p>
+      <button class="rename-button" id="rename-button" type="button">换个名字</button>
+    </div>
+    <div class="cake-area">
+      <h2 id="cake-heading" class="sr-only">请选择一块蛋糕</h2>
+      <div class="plate">
+        <div class="plate-ring"></div>
+        <p class="plate-message" aria-hidden="true">慢慢吃<br>别噎着</p>
+        <div class="cake" id="cake" role="group" aria-label="蛋糕桌上的一只蛋糕"></div>
+      </div>
+      <div class="crumbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <aside class="menu" aria-label="蛋糕说明">
+      <div>
+        <span class="menu-kicker">第 <b id="round-number">1</b> 盘</span>
+        <p><strong id="remaining-count">—</strong><span class="count-total" id="total-count"></span></p>
+      </div>
+      <ol id="flavor-list" class="flavor-list"></ol>
+      <p class="shared-note">大家看到的是桌上同一只蛋糕。最后一块被吃掉后，会自动端上一只新的。</p>
+    </aside>
+  </section>
+
+  <section class="board" aria-labelledby="records-heading">
+    <div class="board-title-row">
+      <div>
+        <h2 id="records-heading">盘子记得谁来过</h2>
+        <p class="board-sub" id="board-sub">默认只显示这一盘。想看以前的，翻一页。</p>
+      </div>
+      <span class="board-round" id="board-round">第 1 盘</span>
+    </div>
+    <ul id="records-list" class="board-list">
+      <li class="board-empty">还没有人动叉子。</li>
+    </ul>
+    <div class="board-controls">
+      <button id="previous-page" type="button" disabled>上一页</button>
+      <button id="next-page" type="button" disabled>下一页</button>
+      <button id="current-plate" type="button" hidden>回到最新</button>
+    </div>
+  </section>
+
+  <div class="name-stage" id="name-stage">
+    <div class="note-backdrop"></div>
+    <form class="name-card" id="name-form" aria-labelledby="name-title">
+      <p class="name-candle" aria-hidden="true">🕯️</p>
+      <h2 id="name-title">欢迎来吃蛋糕</h2>
+      <label for="guest-name">请问你的名字是？</label>
+      <input id="guest-name" name="guestName" type="text" maxlength="24" autocomplete="nickname" placeholder="不写也可以">
+      <p class="name-help" id="name-help">留空则随机生成一个编号。</p>
+      <button type="submit">好，我要挑蛋糕了</button>
+      <p id="name-error" class="name-error" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <div class="note-stage" id="note-stage" hidden>
+    <div class="note-backdrop"></div>
+    <article class="note-card" role="dialog" aria-modal="true" aria-labelledby="note-title">
+      <button class="note-close" id="note-close" type="button" aria-label="收起纸条">×</button>
+      <p class="note-alias" id="note-alias" hidden></p>
+      <p class="note-flavor" id="note-flavor"></p>
+      <h2 id="note-title">盘底掉出一张小纸条</h2>
+      <p class="note-text" id="note-text"></p>
+      <p class="note-source" id="note-source" hidden></p>
+      <p class="note-sign" id="note-sign">— 蛋糕暂时不肯解释</p>
+      <form class="message-form" id="message-form">
+        <label for="guest-message">想在留言板留一句吗？<span>（可选，最多 500 字符）</span></label>
+        <div class="message-row">
+          <input id="guest-message" name="message" type="text" maxlength="500" placeholder="不写也可以，关掉纸条就好">
+          <button type="submit">留下</button>
+        </div>
+        <p id="message-count" class="message-count" aria-live="polite">0 / 500</p>
+        <p id="message-status" class="message-status" aria-live="polite"></p>
+      </form>
+    </article>
+  </div>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>

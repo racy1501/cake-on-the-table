@@ -1,0 +1,34 @@
+{
+  "siteTitle": "桌上有蛋糕",
+  "siteSubtitle": "A TINY CAKE FOR ANYONE",
+  "intro": "挑一块你看顺眼的。吃掉以后，盘底可能会掉出一句话。",
+  "cooldownSeconds": 30,
+  "flavors": [
+    { "id": "flavor-1", "name": "口味一", "cake": "#d98796", "icing": "#fff0ea", "berry": "#b94e68" },
+    { "id": "flavor-2", "name": "口味二", "cake": "#df9a6b", "icing": "#fff1d9", "berry": "#c96d52" },
+    { "id": "flavor-3", "name": "口味三", "cake": "#a2ad79", "icing": "#f0f0d9", "berry": "#718861" },
+    { "id": "flavor-4", "name": "口味四", "cake": "#8580a5", "icing": "#e9e3ef", "berry": "#5d567d" },
+    { "id": "flavor-5", "name": "口味五", "cake": "#8a6758", "icing": "#ead4c5", "berry": "#593b34" },
+    { "id": "flavor-6", "name": "口味六", "cake": "#e3a99d", "icing": "#fff0df", "berry": "#c97872" },
+    { "id": "flavor-7", "name": "口味七", "cake": "#dec36f", "icing": "#fff8d8", "berry": "#bd913c" },
+    { "id": "flavor-8", "name": "口味八", "cake": "#b7748c", "icing": "#f6dce4", "berry": "#8e405f" },
+    { "id": "flavor-9", "name": "口味九", "cake": "#d5c29f", "icing": "#fff9e9", "berry": "#aa8a5c" },
+    { "id": "flavor-10", "name": "口味十", "cake": "#c87886", "icing": "#ffe6e8", "berry": "#9a3a50" },
+    { "id": "flavor-11", "name": "口味十一", "cake": "#99786a", "icing": "#ead7c6", "berry": "#664b41" },
+    { "id": "flavor-12", "name": "口味十二", "cake": "#a994b2", "icing": "#eee5f1", "berry": "#755f80" }
+  ],
+  "notes": [
+    "海上生明月，天涯共此时。——《望月怀远》",
+    "但愿人长久，千里共婵娟。——《水调歌头》",
+    "山重水复疑无路，柳暗花明又一村。——《游山西村》"
+  ],
+  "texts": {
+    "hint": "挑一块吧。别人吃掉的，也会从你的盘子里消失。",
+    "boardTitle": "盘子记得谁来过",
+    "boardSub": "默认只显示这一盘。想看以前的，翻一页。",
+    "nameCardTitle": "欢迎来吃蛋糕",
+    "nameHelp": "留空则随机生成一个编号。",
+    "noteSign": "— 蛋糕暂时不肯解释",
+    "emptyBoard": "还没有人动叉子。"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "cake-on-the-table",
+  "version": "1.0.0",
+  "private": true,
+  "description": "一个供人类朋友和 AI 朋友一起吃蛋糕、抽纸条与留言的小网页。",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/verify.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

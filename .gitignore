@@ -1,0 +1,5 @@
+cake.config.json
+data/
+node_modules/
+.env
+*.log
